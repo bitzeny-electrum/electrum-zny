@@ -646,10 +646,6 @@ def time_difference(distance_in_time, include_seconds):
         return "over %d years" % (round(distance_in_minutes / 525600))
 
 mainnet_block_explorers = {
-    'insight.bitzeny.jp': ('https://insight.bitzeny.jp/',
-                       {'tx': 'tx/', 'addr': 'address/'}),
-    'zeny.insight.monaco-ex.org': ('https://zeny.insight.monaco-ex.org/',
-                       {'tx': 'tx/', 'addr': 'address/'}),
     'zny.blockbook.ovh': ('https://zny.blockbook.ovh/',
                        {'tx': 'tx/', 'addr': 'address/'}),
 }
