@@ -285,7 +285,7 @@ class Blockchain(Logger):
         height = header.get('block_height')
         if prev_hash != header.get('prev_block_hash'):
             raise Exception("prev hash mismatch: %s vs %s" % (prev_hash, header.get('prev_block_hash')))
-        if check_header_bool == False and height % 12 != 0:
+        if check_header_bool is False and height % 12 != 0:
             return
         _hash = hash_header(header)
         if expected_header_hash and expected_header_hash != _hash:
@@ -316,7 +316,7 @@ class Blockchain(Logger):
             raw_header = data[i*HEADER_SIZE : (i+1)*HEADER_SIZE]
             header = deserialize_header(raw_header, index*2016 + i)
             headers[header.get('block_height')] = header
-            if check_header_bool != False or height % 12 == 0:
+            if check_header_bool is True or height % 12 == 0:
                 target = self.get_target(index*2016 + i, headers)
             else:
                 target = 0
