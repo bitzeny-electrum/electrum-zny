@@ -6,7 +6,7 @@
 ;--------------------------------
 ;Variables
 
-  !define PRODUCT_NAME "Electrum-ZNY"
+  !define PRODUCT_NAME "Electrum for BitZeny"
   !define PRODUCT_WEB_SITE "https://github.com/bitzeny-electrum/electrum-zny"
   !define PRODUCT_PUBLISHER "Electrum Technologies GmbH"
   !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"

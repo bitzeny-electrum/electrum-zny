@@ -35,8 +35,8 @@ folder.
         rm -rf $FRESH_CLONE && \
         mkdir -p $FRESH_CLONE && \
         cd $FRESH_CLONE  && \
-        git clone https://github.com/spesmilo/electrum.git && \
-        cd electrum
+        git clone https://github.com/bitzeny-electrum/electrum-zny.git && \
+        cd electrum-zny
     ```
 
     And then build from this directory:
@@ -44,9 +44,9 @@ folder.
     $ git checkout $REV
     $ sudo docker run -it \
         --name electrum-wine-builder-cont \
-        -v $PWD:/opt/wine64/drive_c/electrum \
+        -v $PWD:/opt/wine64/drive_c/electrum-zny \
         --rm \
-        --workdir /opt/wine64/drive_c/electrum/contrib/build-wine \
+        --workdir /opt/wine64/drive_c/electrum-zny/contrib/build-wine \
         electrum-wine-builder-img \
         ./build.sh
     ```
