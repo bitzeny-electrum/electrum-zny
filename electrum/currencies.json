@@ -18,5 +18,10 @@
         "BTC",
         "USD",
         "JPY"
+    ],
+    "CryptoPriceAPI": [
+        "BTC",
+        "USD",
+        "JPY"
     ]
 }
