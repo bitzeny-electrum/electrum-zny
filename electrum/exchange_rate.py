@@ -153,18 +153,6 @@ async def _to_fiat(self, btc, ccy, res):
         btcusd = Decimal(ba_json['last'])
         res['USD'] = btcusd * btc
 
-async def _to_fiat_jpy(self, jpy, ccy, res):
-    if ccy == 'BTC':
-        ba_json = await self.get_json('apiv2.bitcoinaverage.com', '/indices/global/ticker/BTCJPY')
-        btcjpy = Decimal(ba_json['last'])
-        res['BTC'] = jpy / btcjpy
-    elif ccy == 'USD':
-        ba_json = await self.get_json('apiv2.bitcoinaverage.com', '/indices/global/ticker/BTCUSD')
-        bb_json = await self.get_json('apiv2.bitcoinaverage.com', '/indices/global/ticker/BTCJPY')
-        btcusd = Decimal(ba_json['last'])
-        btcjpy = Decimal(bb_json['last'])
-        res['USD'] = (btcusd / btcjpy) * jpy
-
 
 class CoinGecko(ExchangeBase):
 
@@ -196,8 +184,6 @@ class CoinMarketCap(ExchangeBase):
             res['USD'] = usd
         elif ccy == 'JPY':
             res['JPY'] = jpy
-        else:
-            await _to_fiat(self, btc, ccy, res)
 
         return res
 
@@ -221,13 +207,17 @@ class CryptoPriceAPI(ExchangeBase):
 
     async def get_rates(self, ccy):
         json = await self.get_json('crypto-price-api.herokuapp.com', '/price/zny')
-        jpy = Decimal(json['price'])
+        btc = Decimal(json['price']['btc'])
+        usd = Decimal(json['price']['usd'])
+        jpy = Decimal(json['price']['jpy'])
 
         res = {}
-        if ccy == 'JPY':
+        if ccy == 'BTC':
+            res['BTC'] = btc
+        elif ccy == 'USD':
+            res['USD'] = usd
+        elif ccy == 'JPY':
             res['JPY'] = jpy
-        else:
-            await _to_fiat_jpy(self, jpy, ccy, res)
 
         return res
 
