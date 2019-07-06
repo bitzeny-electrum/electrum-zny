@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 from electrum.util import (format_satoshis, format_fee_satoshis, parse_URI,
-                           is_hash256_str, chunks)
+                           is_hash256_str)
 
 from . import SequentialTestCase
 
@@ -50,50 +50,50 @@ class TestUtil(SequentialTestCase):
         self.assertEqual(expected, result)
 
     def test_parse_URI_address(self):
-        self._do_test_parse_URI('bitcoin:15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma',
-                                {'address': '15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma'})
+        self._do_test_parse_URI('bitzeny:ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan',
+                                {'address': 'ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan'})
 
     def test_parse_URI_only_address(self):
-        self._do_test_parse_URI('15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma',
-                                {'address': '15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma'})
+        self._do_test_parse_URI('ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan',
+                                {'address': 'ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan'})
 
 
     def test_parse_URI_address_label(self):
-        self._do_test_parse_URI('bitcoin:15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma?label=electrum%20test',
-                                {'address': '15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma', 'label': 'electrum test'})
+        self._do_test_parse_URI('bitzeny:ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan?label=electrum%20test',
+                                {'address': 'ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan', 'label': 'electrum test'})
 
     def test_parse_URI_address_message(self):
-        self._do_test_parse_URI('bitcoin:15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma?message=electrum%20test',
-                                {'address': '15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma', 'message': 'electrum test', 'memo': 'electrum test'})
+        self._do_test_parse_URI('bitzeny:ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan?message=electrum%20test',
+                                {'address': 'ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan', 'message': 'electrum test', 'memo': 'electrum test'})
 
     def test_parse_URI_address_amount(self):
-        self._do_test_parse_URI('bitcoin:15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma?amount=0.0003',
-                                {'address': '15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma', 'amount': 30000})
+        self._do_test_parse_URI('bitzeny:ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan?amount=0.0003',
+                                {'address': 'ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan', 'amount': 30000})
 
     def test_parse_URI_address_request_url(self):
-        self._do_test_parse_URI('bitcoin:15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma?r=http://domain.tld/page?h%3D2a8628fc2fbe',
-                                {'address': '15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma', 'r': 'http://domain.tld/page?h=2a8628fc2fbe'})
+        self._do_test_parse_URI('bitzeny:ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan?r=http://domain.tld/page?h%3D2a8628fc2fbe',
+                                {'address': 'ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan', 'r': 'http://domain.tld/page?h=2a8628fc2fbe'})
 
     def test_parse_URI_ignore_args(self):
-        self._do_test_parse_URI('bitcoin:15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma?test=test',
-                                {'address': '15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma', 'test': 'test'})
+        self._do_test_parse_URI('bitzeny:ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan?test=test',
+                                {'address': 'ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan', 'test': 'test'})
 
     def test_parse_URI_multiple_args(self):
-        self._do_test_parse_URI('bitcoin:15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma?amount=0.00004&label=electrum-test&message=electrum%20test&test=none&r=http://domain.tld/page',
-                                {'address': '15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma', 'amount': 4000, 'label': 'electrum-test', 'message': u'electrum test', 'memo': u'electrum test', 'r': 'http://domain.tld/page', 'test': 'none'})
+        self._do_test_parse_URI('bitzeny:ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan?amount=0.00004&label=electrum-test&message=electrum%20test&test=none&r=http://domain.tld/page',
+                                {'address': 'ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan', 'amount': 4000, 'label': 'electrum-test', 'message': u'electrum test', 'memo': u'electrum test', 'r': 'http://domain.tld/page', 'test': 'none'})
 
     def test_parse_URI_no_address_request_url(self):
-        self._do_test_parse_URI('bitcoin:?r=http://domain.tld/page?h%3D2a8628fc2fbe',
+        self._do_test_parse_URI('bitzeny:?r=http://domain.tld/page?h%3D2a8628fc2fbe',
                                 {'r': 'http://domain.tld/page?h=2a8628fc2fbe'})
 
     def test_parse_URI_invalid_address(self):
-        self.assertRaises(BaseException, parse_URI, 'bitcoin:invalidaddress')
+        self.assertRaises(BaseException, parse_URI, 'bitzeny:invalidaddress')
 
     def test_parse_URI_invalid(self):
-        self.assertRaises(BaseException, parse_URI, 'notbitcoin:15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma')
+        self.assertRaises(BaseException, parse_URI, 'notbitzeny:ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan')
 
     def test_parse_URI_parameter_polution(self):
-        self.assertRaises(Exception, parse_URI, 'bitcoin:15mKKb2eos1hWa6tisdPwwDC1a5J1y9nma?amount=0.0003&label=test&amount=30.0')
+        self.assertRaises(Exception, parse_URI, 'bitzeny:ZeJdNmQps5UAs1xEZF7driqxAQCvA8QJan?amount=0.0003&label=test&amount=30.0')
 
     def test_is_hash256_str(self):
         self.assertTrue(is_hash256_str('09a4c03e3bdf83bbe3955f907ee52da4fc12f4813d459bc75228b64ad08617c7'))
@@ -104,9 +104,3 @@ class TestUtil(SequentialTestCase):
         self.assertFalse(is_hash256_str('qweqwe'))
         self.assertFalse(is_hash256_str(None))
         self.assertFalse(is_hash256_str(7))
-
-    def test_chunks(self):
-        self.assertEqual([[1, 2], [3, 4], [5]],
-                         list(chunks([1, 2, 3, 4, 5], 2)))
-        with self.assertRaises(ValueError):
-            list(chunks([1, 2, 3], 0))
