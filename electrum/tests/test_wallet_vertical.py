@@ -256,14 +256,14 @@ class TestWalletKeystoreAddressIntegrityForMainnet(SequentialTestCase):
 
         self.assertTrue(isinstance(ks, keystore.BIP32_KeyStore))
 
-        self.assertEqual(ks.xprv, 'xprv9y54hGBSA1CSiNn2EoovJbZcdik7pFdwSNjr8uXfuCNxn2asgVrPMtSj5aAbJaeTTbxisepGMVgyZNoqEZz33xqL8GJSPnbxPrMzjeTAYEe')
-        self.assertEqual(ks.xpub, 'xpub6C4R6miKzNkjvrrVLqLvfjWMBkacDiMnobfSwHwHTXuwepv2E3AdugmCvruiHLvjmjb2kvbmvnXk3cs5K16ceRwcBDDVA2CLJid59E2J26U')
+        self.assertEqual(ks.xprv, 'xprv9yrA1MrweWxUh9ktGME4krcDPt8QqNQcJ6tEzWGw47EBc1mpWR9jkNixizhkMEq8RtujYirHC8Ugbmv5Xp47wKkdVjjiMZc7E8j6b1Z7SfE')
+        self.assertEqual(ks.xpub, 'xpub6CqWQsPqUtWmudqMNNm57zYwwuxuEq8TfKoqntgYcSmAUp6y3xTzJB3SaFZR8KCwQRpz3ujp2VLR8eaTcriuDXCCuVokdMYuqwV8YmoJ1zT')
 
         w = WalletIntegrityHelper.create_standard_wallet(ks)
         self.assertEqual(w.txin_type, 'p2pkh')
 
-        self.assertEqual(w.get_receiving_addresses()[0], 'ZmYqJFsnp4ySCbqnS5u1tspkNGJkV2xVrA')
-        self.assertEqual(w.get_change_addresses()[0], 'ZdJL4rAbbq1CUe41odfP3tko8PKYJgLi6m')
+        self.assertEqual(w.get_receiving_addresses()[0], 'ZjKQPHiYNhKeBTbxHi612Y5con6UquEhTs')
+        self.assertEqual(w.get_change_addresses()[0], 'ZmPNMWZadCFDYKCndx5aKsKsypz2TBFbUJ')
 
     @needs_test_with_all_ecc_implementations
     @mock.patch.object(storage.WalletStorage, '_write')
@@ -295,8 +295,8 @@ class TestWalletKeystoreAddressIntegrityForMainnet(SequentialTestCase):
 
         self.assertTrue(isinstance(ks, keystore.BIP32_KeyStore))
 
-        self.assertEqual(ks.xprv, 'zprvAdG4iTXWBoARxkkzNpNh8r6Qag3irQB8PzEMkAFeTRXxHpbF9z4QgEvBRmfvqWvGp42t42nvgGpNgYSJA9iefm1yYNZKEm7z6qUWCroSQnE')
-        self.assertEqual(ks.xpub, 'zpub6rFR7y4Q2AijBEqTUquhVz398htDFrtymD9xYYfG1m4wAcvPhXNfE3EfH1r1ADqtfSdVCToUG868RvUUkgDKf31mGDtKsAYz2oz2AGutZYs')
+        self.assertEqual(ks.xprv, 'zprvAd7hRXfFybgAybNbbS5xrmYaLgswD6nmSFcGB3B7X6iHKjcWBGqiCSxRrbZjMgfEGTjaABkQ4LeaSsW97Xr2mW8BQoniyWhQwkUTdr5ySZr')
+        self.assertEqual(ks.xpub, 'zpub6r73q3C9oyEUC5T4hTcyDuVJtiiRcZWcoUXryRaj5SFGCXweip9xkFGuhtQGphREE19Y2AtKd91zffpskALZmSUs45jZKc7yYnpUm7KTqCH')
 
         w = WalletIntegrityHelper.create_standard_wallet(ks)
         self.assertEqual(w.txin_type, 'p2wpkh')

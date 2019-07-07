@@ -62,7 +62,7 @@ class TestTransaction(SequentialTestCase):
         expected = {
             'inputs': [{
                 'type': 'p2pkh',
-                'address': 'ZwcrZE4jsa7wGKYYrQuLct1Lh7AFGspLqz',
+                'address': 'ZeRxZGCKXhfCtMygbvHjNg5DAPA5LzkxNi',
                 'num_sig': 1,
                 'prevout_hash': '3140eb24b43386f35ba69e3875eb6c93130ac66201d01c58f598defc949a5c2a',
                 'prevout_n': 0,
@@ -90,7 +90,7 @@ class TestTransaction(SequentialTestCase):
         self.assertEqual(tx.get_outputs_for_UI(), [TxOutputForUI('Zea9JNiXVLqY54MpGAoUVWgZgKqwQxmr4j', 1000000)])
 
         self.assertTrue(tx.has_address('Zea9JNiXVLqY54MpGAoUVWgZgKqwQxmr4j'))
-        self.assertTrue(tx.has_address('ZwcrZE4jsa7wGKYYrQuLct1Lh7AFGspLqz'))
+        self.assertTrue(tx.has_address('ZeRxZGCKXhfCtMygbvHjNg5DAPA5LzkxNi'))
         self.assertFalse(tx.has_address('1CQj15y1N7LDHp7wTt28eoD1QhHgFgxECH'))
 
         self.assertEqual(tx.serialize(), unsigned_blob)
@@ -115,7 +115,7 @@ class TestTransaction(SequentialTestCase):
                 'type': 'unknown'}],
             'lockTime': 0,
             'outputs': [{
-                'address': 'ZsRM2PUgc21vgQZ9DPsFubrvpDpua3wVKS',
+                'address': 'Zea9JNiXVLqY54MpGAoUVWgZgKqwQxmr4j',
                 'prevout_n': 0,
                 'scriptPubKey': '76a914230ac37834073a42146f11ef8414ae929feaafc388ac',
                 'type': TYPE_ADDRESS,
@@ -201,6 +201,7 @@ class TestTransaction(SequentialTestCase):
         self.assertEqual((ADDR, 'bz1pw508d6qejxtdg4y5r3zarvary0c5xw7kw508d6qejxtdg4y5r3zarvary0c5xw7kp575ck'), addr_from_script('5128751e76e8199196d454941c45d1b3a323f1433bd6751e76e8199196d454941c45d1b3a323f1433bd6'))
         self.assertEqual((ADDR, 'bz1sw50qwedyzm'), addr_from_script('6002751e'))
         self.assertEqual((ADDR, 'bz1zw508d6qejxtdg4y5r3zarvaryvxc3xcn'), addr_from_script('5210751e76e8199196d454941c45d1b3a323'))
+
         # almost but not quite
         self.assertEqual((SCRIPT, '0013751e76e8199196d454941c45d1b3a323f1433b'), addr_from_script('0013751e76e8199196d454941c45d1b3a323f1433b'))
 
