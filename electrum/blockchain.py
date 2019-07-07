@@ -292,7 +292,7 @@ class Blockchain(Logger):
             raise Exception("hash mismatches with expected: {} vs {}".format(expected_header_hash, _hash))
         if constants.net.TESTNET:
             return
-        if height % 2016 != 0 and height // 2016 < len(constants.net.CHECKPOINTS) or height >= len(constants.net.CHECKPOINTS)*2016 and height <= len(constants.net.CHECKPOINTS)*2016 + 25:
+        if height // 2016 < len(constants.net.CHECKPOINTS) and height % 2016 != 2015 or height >= len(constants.net.CHECKPOINTS)*2016 and height <= len(constants.net.CHECKPOINTS)*2016 + 25:
             return
         bits = cls.target_to_bits(target)
         if bits != header.get('bits'):
@@ -503,10 +503,8 @@ class Blockchain(Logger):
     def get_target_dgwv3(self, height, chain=None) -> int:
 
         last = chain.get(height - 1)
-        #last = self.read_header(height - 1)
         if last is None:
             last = self.read_header(height - 1)
-            #last = chain.get(height - 1)
 
         # params
         pindex = last
@@ -555,10 +553,10 @@ class Blockchain(Logger):
         # compute target from chunk x, used in chunk x+1
         if constants.net.TESTNET:
             return 0
-        elif height // 2016 < len(self.checkpoints) and height % 2016 == 0:
+        elif height // 2016 < len(self.checkpoints) and height % 2016 == 2015:
             h, t = self.checkpoints[height // 2016]
             return t
-        elif height // 2016 < len(self.checkpoints) and height % 2016 != 0:
+        elif height // 2016 < len(self.checkpoints) and height % 2016 != 2015:
             return 0
         else:
             return self.get_target_dgwv3(height, chain)
@@ -661,7 +659,8 @@ class Blockchain(Logger):
         n = self.height() // 2016
         for index in range(n):
             h = self.get_hash((index+1) * 2016 -1)
-            target = self.get_target(index * 2016)
+            header = self.read_header((index+1) * 2016 -1)
+            target = self.bits_to_target(header.get('bits'))
             cp.append((h, target))
         return cp
 
