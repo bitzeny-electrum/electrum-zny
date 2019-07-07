@@ -173,7 +173,7 @@ class Test_bitcoin(SequentialTestCase):
         sig1_b64 = base64.b64encode(sig1)
         sig2_b64 = base64.b64encode(sig2)
 
-        self.assertEqual(sig1_b64, b'H5uDtBvObDIjqaD4oz/53DYg2jngUpPfzZL8tcd728iEE0U136li9uZqaE7rd9844zj/bFvmwfxdMzeUprsYWYY=')
+        self.assertEqual(sig1_b64, b'H7rYMRe0AArej5m8ly7ZmYTo+8HJwIA8IWzUbrROu8QdPyF3c/YHd1GrnT2z2R7VPsHMgU0y0I5pQIt8cfb5e88=')
         self.assertEqual(sig2_b64, b'H/nqcaAudmTSpZxrxndxUbGYN2QWc3wc15Keia2yCDnpT4pIQ+Vfsu4njUf80oRlOJ60FGx7htMmLyJymn/MhQw=')
 
         self.assertTrue(ecc.verify_message_with_address(addr1, sig1, msg1))
@@ -362,7 +362,7 @@ class Test_bitcoin(SequentialTestCase):
         # test vectors from BIP-0173
         self.assertEqual(address_to_script('BZ1QW508D6QEJXTDG4Y5R3ZARVARY0C5XW7KLQZTEW'), '0014751e76e8199196d454941c45d1b3a323f1433bd6')
         self.assertEqual(address_to_script('bz1pw508d6qejxtdg4y5r3zarvary0c5xw7kw508d6qejxtdg4y5r3zarvary0c5xw7kp575ck'), '5128751e76e8199196d454941c45d1b3a323f1433bd6751e76e8199196d454941c45d1b3a323f1433bd6')
-        self.assertEqual(address_to_script('BC1SW50QWEDYZM'), '6002751e')
+        self.assertEqual(address_to_script('BZ1SW50QWEDYZM'), '6002751e')
         self.assertEqual(address_to_script('bz1zw508d6qejxtdg4y5r3zarvaryvxc3xcn'), '5210751e76e8199196d454941c45d1b3a323')
 
         # base58 P2PKH

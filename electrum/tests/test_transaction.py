@@ -62,7 +62,7 @@ class TestTransaction(SequentialTestCase):
         expected = {
             'inputs': [{
                 'type': 'p2pkh',
-                'address': 'ZiFiekHEaj8T739fFiD8uY2E4QB49h8L4J',
+                'address': 'ZwcrZE4jsa7wGKYYrQuLct1Lh7AFGspLqz',
                 'num_sig': 1,
                 'prevout_hash': '3140eb24b43386f35ba69e3875eb6c93130ac66201d01c58f598defc949a5c2a',
                 'prevout_n': 0,
@@ -73,7 +73,7 @@ class TestTransaction(SequentialTestCase):
                 'x_pubkeys': ['ff0488b21e03ef2afea18000000089689bff23e1e7fb2f161daa37270a97a3d8c2e537584b2d304ecb47b86d21fc021b010d3bd425f8cf2e04824bfdf1f1f5ff1d51fadd9a41f9e3fb8dd3403b1bfe00000000']}],
             'lockTime': 0,
             'outputs': [{
-                'address': 'ZsRM2PUgc21vgQZ9DPsFubrvpDpua3wVKS',
+                'address': 'Zea9JNiXVLqY54MpGAoUVWgZgKqwQxmr4j',
                 'prevout_n': 0,
                 'scriptPubKey': '76a914230ac37834073a42146f11ef8414ae929feaafc388ac',
                 'type': TYPE_ADDRESS,
@@ -87,10 +87,10 @@ class TestTransaction(SequentialTestCase):
         self.assertEqual(tx.deserialize(), None)
 
         self.assertEqual(tx.as_dict(), {'hex': unsigned_blob, 'complete': False, 'final': True})
-        self.assertEqual(tx.get_outputs_for_UI(), [TxOutputForUI('ZsRM2PUgc21vgQZ9DPsFubrvpDpua3wVKS', 1000000)])
+        self.assertEqual(tx.get_outputs_for_UI(), [TxOutputForUI('Zea9JNiXVLqY54MpGAoUVWgZgKqwQxmr4j', 1000000)])
 
-        self.assertTrue(tx.has_address('ZsRM2PUgc21vgQZ9DPsFubrvpDpua3wVKS'))
-        self.assertTrue(tx.has_address('ZiFiekHEaj8T739fFiD8uY2E4QB49h8L4J'))
+        self.assertTrue(tx.has_address('Zea9JNiXVLqY54MpGAoUVWgZgKqwQxmr4j'))
+        self.assertTrue(tx.has_address('ZwcrZE4jsa7wGKYYrQuLct1Lh7AFGspLqz'))
         self.assertFalse(tx.has_address('1CQj15y1N7LDHp7wTt28eoD1QhHgFgxECH'))
 
         self.assertEqual(tx.serialize(), unsigned_blob)
@@ -197,16 +197,16 @@ class TestTransaction(SequentialTestCase):
 
         # bech32 native segwit
         # test vectors from BIP-0173
-        self.assertEqual((ADDR, 'bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4'), addr_from_script('0014751e76e8199196d454941c45d1b3a323f1433bd6'))
-        self.assertEqual((ADDR, 'bc1pw508d6qejxtdg4y5r3zarvary0c5xw7kw508d6qejxtdg4y5r3zarvary0c5xw7k7grplx'), addr_from_script('5128751e76e8199196d454941c45d1b3a323f1433bd6751e76e8199196d454941c45d1b3a323f1433bd6'))
-        self.assertEqual((ADDR, 'bc1sw50qa3jx3s'), addr_from_script('6002751e'))
-        self.assertEqual((ADDR, 'bc1zw508d6qejxtdg4y5r3zarvaryvg6kdaj'), addr_from_script('5210751e76e8199196d454941c45d1b3a323'))
+        self.assertEqual((ADDR, 'bz1qw508d6qejxtdg4y5r3zarvary0c5xw7klqztew'), addr_from_script('0014751e76e8199196d454941c45d1b3a323f1433bd6'))
+        self.assertEqual((ADDR, 'bz1pw508d6qejxtdg4y5r3zarvary0c5xw7kw508d6qejxtdg4y5r3zarvary0c5xw7kp575ck'), addr_from_script('5128751e76e8199196d454941c45d1b3a323f1433bd6751e76e8199196d454941c45d1b3a323f1433bd6'))
+        self.assertEqual((ADDR, 'bz1sw50qwedyzm'), addr_from_script('6002751e'))
+        self.assertEqual((ADDR, 'bz1zw508d6qejxtdg4y5r3zarvaryvxc3xcn'), addr_from_script('5210751e76e8199196d454941c45d1b3a323'))
         # almost but not quite
         self.assertEqual((SCRIPT, '0013751e76e8199196d454941c45d1b3a323f1433b'), addr_from_script('0013751e76e8199196d454941c45d1b3a323f1433b'))
 
         # base58 p2pkh
-        self.assertEqual((ADDR, '14gcRovpkCoGkCNBivQBvw7eso7eiNAbxG'), addr_from_script('76a91428662c67561b95c79d2257d2a93d9d151c977e9188ac'))
-        self.assertEqual((ADDR, '1BEqfzh4Y3zzLosfGhw1AsqbEKVW6e1qHv'), addr_from_script('76a914704f4b81cadb7bf7e68c08cd3657220f680f863c88ac'))
+        self.assertEqual((ADDR, 'Zf4UBc5AFpLEzJfChuP1D6ANrez4HiWqoh'), addr_from_script('76a91428662c67561b95c79d2257d2a93d9d151c977e9188ac'))
+        self.assertEqual((ADDR, 'ZmchRnqQ3fXxavAgFgupT2tKDBMue1g9Gv'), addr_from_script('76a914704f4b81cadb7bf7e68c08cd3657220f680f863c88ac'))
         # almost but not quite
         self.assertEqual((SCRIPT, '76a9130000000000000000000000000000000000000088ac'), addr_from_script('76a9130000000000000000000000000000000000000088ac'))
 
