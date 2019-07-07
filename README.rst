@@ -14,11 +14,8 @@ Electrum for BitZeny- Lightweight BitZeny client
     :target: https://travis-ci.org/bitzeny-electrum/electrum-zny
     :alt: Build Status
 .. image:: https://coveralls.io/repos/github/bitzeny-electrum/electrum-zny/badge.svg?branch=master-3.3.x
-:target: https://coveralls.io/github/bitzeny-electrum/electrum-zny?master-3.3.x
+    :target: https://coveralls.io/github/bitzeny-electrum/electrum-zny?master-3.3.x
     :alt: Test coverage statistics
-
-
-
 
 
 Getting started
