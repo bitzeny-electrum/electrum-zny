@@ -7,7 +7,7 @@ title = Electrum for BitZeny
 package.name = Electrum
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = net.electrum-jp.zny
+package.domain = org.electrum_zny
 
 # (str) Source code where the main.py live
 source.dir = .
