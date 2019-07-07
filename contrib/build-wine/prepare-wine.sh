@@ -94,7 +94,7 @@ info "Building PyInstaller."
 # we build our own PyInstaller boot loader as the default one has high
 # anti-virus false positives
 (
-    cd "$WINEPREFIX/drive_c/electrum"
+    cd "$WINEPREFIX/drive_c/electrum-zny"
     ELECTRUM_COMMIT_HASH=$(git rev-parse HEAD)
     cd "$CACHEDIR"
     rm -rf pyinstaller

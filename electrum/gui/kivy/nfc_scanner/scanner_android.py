@@ -171,14 +171,14 @@ class ScannerAndroid(NFCBase):
         '''Create our actual payload record.
         '''
         if BUILDVERSION >= 14:
-            domain = "org.electrum"
+            domain = "net.electrum-jp.zny"
             stype = "externalType"
             extRecord = NdefRecord.createExternal(domain, stype, data)
         else:
             # Creating the NdefRecord manually:
             extRecord = NdefRecord(
                 NdefRecord.TNF_EXTERNAL_TYPE,
-                "org.electrum:externalType",
+                "net.electrum-jp.zny:externalType",
                 '',
                 data)
         return extRecord
@@ -213,7 +213,7 @@ class ScannerAndroid(NFCBase):
         # Create record
         ndef_record = NdefRecord(
                 NdefRecord.TNF_MIME_MEDIA,
-                'org.electrum.kivy', '', data)
+                'net.electrum-jp.zny.kivy', '', data)
         
         # Create message
         ndef_message = NdefMessage([ndef_record])
