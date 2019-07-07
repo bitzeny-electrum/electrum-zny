@@ -142,6 +142,9 @@ android.whitelist = lib-dynload/_csv.so
 # local version that merges branch 866
 p4a.source_dir = /opt/python-for-android
 
+# (str) The directory in which python-for-android should look for your own build recipes (if any)
+p4a.local_recipes = contrib/local_recipes
+
 #
 # iOS specific
 #

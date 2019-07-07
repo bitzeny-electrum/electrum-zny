@@ -165,7 +165,7 @@ class ScannerAndroid(NFCBase):
     def create_AAR(self):
         '''Create the record responsible for linking our application to the tag.
         '''
-        return NdefRecord.createApplicationRecord(JString("org.electrum.kivy"))
+        return NdefRecord.createApplicationRecord(JString("net.electrum-jp.zny.kivy"))
 
     def create_TNF_EXTERNAL(self, data):
         '''Create our actual payload record.
