@@ -154,7 +154,7 @@ android.whitelist = lib-dynload/_csv.so
 p4a.source_dir = /opt/python-for-android
 
 # (str) The directory in which python-for-android should look for your own build recipes (if any)
-#p4a.local_recipes =
+p4a.local_recipes = contrib/local_recipes
 
 # (str) Filename to the hook for p4a
 #p4a.hook =
