@@ -1,0 +1,20 @@
+diff -crN zny_yespower_0_5_python3.orig/setup.py zny_yespower_0_5_python3/setup.py
+*** zny_yespower_0_5_python3.orig/setup.py      Sun Jul 14 13:38:22 2019
+--- zny_yespower_0_5_python3/setup.py   Sun Jul 14 13:38:35 2019
+***************
+*** 6,12 ****
+                                         'yespower-opt.c',
+                                         'sha256.c'
+                                         ],
+!                             extra_compile_args=['-O2', '-funroll-loops', '-fomit-frame-pointer'],
+                              include_dirs=['.'])
+
+  setup (name = 'zny_yespower_0_5',
+--- 6,12 ----
+                                         'yespower-opt.c',
+                                         'sha256.c'
+                                         ],
+!                             extra_compile_args=['-O2'],
+                              include_dirs=['.'])
+
+  setup (name = 'zny_yespower_0_5',
